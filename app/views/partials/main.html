@@ -14,22 +14,18 @@
 
 			var objects = [];
 			var targets = { table: [], sphere: [], helix: [], grid: [] };
+			var table ;
 			$.ajax({ 
    				type: "GET",
-   				dataType: "jsonp",
-   				url: "http://localhost:8080/api/vms/status",
+   				dataType: "json",
+   				url: "http://localhost:9000/api/vms/status",
    				success: function(data){        
-     				alert(data);
+       				table = data;
      				init();
 					animate();
    				}
 			});
-
-			var table = [
-       
-			];
       	
-
 			function init() {
 
 				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
