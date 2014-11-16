@@ -47,7 +47,9 @@
 
 					var element = document.createElement( 'div' );
 					element.className = 'element';
-					element.onclick="showDetails('"+table[i].request+"');"
+					element.onClick = function () {
+						alert(table[i].request);
+					};
 					element.style.backgroundColor = 'rgba(0,127,127,0.75)';
 
 					var number = document.createElement( 'div' );
@@ -58,6 +60,9 @@
 					var symbol = document.createElement( 'div' );
 					symbol.className = 'symbol ' + table[i].dc;
 					symbol.textContent = table[ i ].ip;
+					symbol.onClick = function () {
+						alert(table[i].request);
+					}
 					element.appendChild( symbol );
 
 					var details = document.createElement( 'div' );
@@ -131,6 +136,15 @@
 				}
 
 				// grid
+                var layercounter = new Array();
+                layercounter['dal1'] = 0;
+                layercounter['dal2'] = 0;
+                layercounter['dal3'] = 0;
+                layercounter['dal4'] = 0;
+                layercounter['dfw1'] = 0;
+                layercounter['dfw2'] = 0;
+                layercounter['dfw3'] = 0;
+                layercounter['dfw4'] = 0;
 
 				for ( var i = 0; i < objects.length; i ++ ) {
 
@@ -139,9 +153,13 @@
 					//object.position.x =  ( ( i % 30 ) * 100 ) - 3500 ;
 					//object.position.y = 2000 - ( ( Math.floor( i / 30 ) ) * 100 ) ;
 					//object.position.z = ( Math.floor( i / 25 ) ) * 1000 - 2000;
-					object.position.x = ( table[ i ].x * 150 ) - 3500;
-					object.position.y = 2000 - ( table[ i ].y * 200 );
+                    var position = layercounter[table[i].dc];
+                    
+					object.position.x = ( (position/11) * 150 ) - 3500;
+					object.position.y = 2000 - ((position%11) *150);
 					object.position.z = getZIndex(table[i].dc) * 300;
+					layercounter[table[i].dc] = layercounter[table[i].dc]+ 1;
+					//alert(layercounter[table[i].dc]  + ":" + i + " dc "+table[i].dc );
 					targets.grid.push( object );
 
 				}
