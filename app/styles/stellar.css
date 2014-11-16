@@ -61,8 +61,31 @@ html, body {
                                         right: 0px;
                                         font-size: 60px;
                                         font-weight: bold;
-                                        color: rgba(255,255,255,0.75);
                                         text-shadow: 0 0 10px rgba(0,255,255,0.95);
+                                }
+                                .dal1{
+                                    color: rgba(255,255,255,0.75);    
+                                }
+                                .dal2{
+                                    color: rgba(255,255,0,0.75);    
+                                }
+                                .dal3{
+                                    color: rgba(255,0,255,0.75);    
+                                }
+                                .dal4{
+                                    color: rgba(0,255,255,0.75);    
+                                }
+                                .dfw1{
+                                    color: rgba(255,0,0,0.75);    
+                                }
+                                .dfw2{
+                                    color: rgba(0,255,0,0.75);    
+                                }
+                                .dfw3{
+                                    color: rgba(0,0,255,0.75);    
+                                }
+                                .dal4{
+                                    color: rgba(127,127,127,0.75);    
                                 }
 
                                 .element .details {

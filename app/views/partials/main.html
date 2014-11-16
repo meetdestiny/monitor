@@ -26,12 +26,20 @@
    				}
 			});
       	
+     
+            function showDetails(details) {
+                 alert(details);
+            }
+
 			function init() {
 
-				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
-				camera.position.z = 3000;
-
+				camera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 1, 2000 );
+				camera.position.z = 2000;
+				camera.position.x =0;
+				camera.position.y=0;
+                //camera.lookAt( new THREE.Vector3( 0, 0, 0 ) );
 				scene = new THREE.Scene();
+
 
 				// table
 
@@ -39,7 +47,8 @@
 
 					var element = document.createElement( 'div' );
 					element.className = 'element';
-					element.style.backgroundColor = 'rgba(0,127,127,' + ( Math.random() * 0.5 + 0.25 ) + ')';
+					element.onclick="showDetails('"+table[i].request+"');"
+					element.style.backgroundColor = 'rgba(0,127,127,0.75)';
 
 					var number = document.createElement( 'div' );
 					number.className = 'number';
@@ -47,7 +56,7 @@
 					element.appendChild( number );
 
 					var symbol = document.createElement( 'div' );
-					symbol.className = 'symbol';
+					symbol.className = 'symbol ' + table[i].dc;
 					symbol.textContent = table[ i ].ip;
 					element.appendChild( symbol );
 
@@ -67,8 +76,8 @@
 					//
 
 					var object = new THREE.Object3D();
-					object.position.x = ( table[ i ].x * 140 ) - 1330;
-					object.position.y = - ( table[ i ].y * 180 ) + 990;
+					object.position.x = ( table[ i ].x * 150 ) - 3500;
+					object.position.y = 2000 - ( table[ i ].y * 200 );
 
 					targets.table.push( object );
 
@@ -85,9 +94,9 @@
 
 					var object = new THREE.Object3D();
 
-					object.position.x = 800 * Math.cos( theta ) * Math.sin( phi );
-					object.position.y = 800 * Math.sin( theta ) * Math.sin( phi );
-					object.position.z = 800 * Math.cos( phi );
+					object.position.x = 1000 * Math.cos( theta ) * Math.sin( phi );
+					object.position.y = 1000 * Math.sin( theta ) * Math.sin( phi );
+					object.position.z = 1000 * Math.cos( phi );
 
 					vector.copy( object.position ).multiplyScalar( 2 );
 
@@ -127,11 +136,12 @@
 
 					var object = new THREE.Object3D();
 
-					object.position.x = ( ( i % 5 ) * 400 ) - 800;
-					object.position.y = ( - ( Math.floor( i / 5 ) % 5 ) * 400 ) + 800;
+					//object.position.x =  ( ( i % 30 ) * 100 ) - 3500 ;
+					//object.position.y = 2000 - ( ( Math.floor( i / 30 ) ) * 100 ) ;
 					//object.position.z = ( Math.floor( i / 25 ) ) * 1000 - 2000;
-					object.position.z = getZIndex(table[i].dc) *300;
-
+					object.position.x = ( table[ i ].x * 150 ) - 3500;
+					object.position.y = 2000 - ( table[ i ].y * 200 );
+					object.position.z = getZIndex(table[i].dc) * 300;
 					targets.grid.push( object );
 
 				}
@@ -155,7 +165,6 @@
 				button.addEventListener( 'click', function ( event ) {
 
 					transform( targets.table, 2000 );
-
 				}, false );
 
 				var button = document.getElementById( 'sphere' );
@@ -195,6 +204,7 @@
 			}
 
             function getZIndex( dc) {
+
             	if(dc =="dal1") {
             		return -1;
             	} 
