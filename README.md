@@ -12,5 +12,7 @@ run
 
 That's it! You should now have a node application running on port 4200. 
 
-You would need to open the app in a browser by visiting http://localhost:4200. 
+You would need to open the app in a browser by visiting http://localhost:4200.
+
+This scales to 1000s of servers in a single display window. 
 
