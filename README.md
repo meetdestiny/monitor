@@ -7,7 +7,9 @@ run
 =======
 
 > git clone https://github.com/meetdestiny/monitor.git
+
 > npm install
+
 > npm run
 
 That's it! You should now have a node application running on port 4200. 
